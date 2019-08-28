@@ -26,7 +26,7 @@
 
     <h2 style="margin-left: 14%">Click the button to generate your Powerball numbers!</h2>
     <br>
-    <button onclick="myFunction()" style="height:70px; width:100px; margin-left:33.5%;font-size:25px">Try it!</button>
+    <button onclick="getNumbers()" style="height:70px; width:100px; margin-left:33.5%;font-size:25px">Try it!</button>
     <br>
     <br>
     <div class="row">
@@ -57,15 +57,15 @@
         </div>
         <div class="col-md-2">
             <div class=container8>
+                <!-- Ball number 6 which is the powerball number -->
                    <img src="../PowerBallSimulator/./././assets/images/powerBall.png" alt="" style="width:100%; height:100%;">  
                       
-                <!-- <h2>Power Ball</h2> -->
-            </div>
+                </div>
         </div>
 
     </div>
 
-    <div class="row">
+    <div class="row" id="PowerballTicket">
         <div class="col-md-2">
             <div class=container1>
                 <h2>
@@ -111,94 +111,68 @@
 
 
     </div>
-    <!-- These boxes are just a checker to make sure the code is working, turn them on to find out! ***************************************-->
-    <div class="row">
-        <div class="col-md-2">
-            <div class=container7>
-                <p id="targetB"></p>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class=container7>
-                <p id="targetC"></p>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class=container7>
-                <p id="targetD"></p>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class=container7>
-                <p id="targetE"></p>
-            </div>
-        </div>
-    </div>
+   
     <script>
         // function to get a random number 1 through 69 and 1 through 26 for the powerball
-        function myFunction() {
-            var a = Math.floor((Math.random() * 69) + 1);
-            var b = Math.floor((Math.random() * 69) + 1);
-            var c = Math.floor((Math.random() * 69) + 1);
-            var d = Math.floor((Math.random() * 69) + 1);
-            var e = Math.floor((Math.random() * 69) + 1);
-            var f = Math.floor((Math.random() * 26) + 1);
-
-            document.getElementById("demo1").innerHTML = a;
-            // Previous code for B
-            // repeats random 1 through 69 until all numbers are different
-            // while b=a, rerun the code
-            while (b === a) {
-                var b = Math.floor((Math.random() * 69) + 1);
+        function getNumbers() {
+            var num1 = Math.floor((Math.random() * 69) + 1);
+            var num2 = Math.floor((Math.random() * 69) + 1);
+            var num3 = Math.floor((Math.random() * 69) + 1);
+            var num4 = Math.floor((Math.random() * 69) + 1);
+            var num5 = Math.floor((Math.random() * 69) + 1);
+            var numPB = Math.floor((Math.random() * 26) + 1);
+            
+            // this code makes sure non of the non powerball numbers are the same
+            while (num2 === num1) {
+                var num2 = Math.floor((Math.random() * 69) + 1);
             }
-            // while c = a or b, rerun the code
-            while (c === b || c === a) {
-                var c = Math.floor((Math.random() * 69) + 1);
+            
+            while (num3 === num2 || num3 === num1) {
+                var num3 = Math.floor((Math.random() * 69) + 1);
             }
 
-            while (d === c || d === b || d === a) {
-                var d = Math.floor((Math.random() * 69) + 1);
+            while (num4 === num3 || num4 === num2 || num4 === num1) {
+                var num4 = Math.floor((Math.random() * 69) + 1);
             }
 
-            while (e === d || e === c || e === b || e ===a ) {
-                var e = Math.floor((Math.random() * 69) + 1);
-            }
-          
-            document.getElementById("demo2").innerHTML = b;
-            document.getElementById("demo3").innerHTML = c;
-            document.getElementById("demo4").innerHTML = d;
-            document.getElementById("demo5").innerHTML = e;
-
-            // powerball number, can = any of the first 5 so no extra do-whiles needed
-            document.getElementById("demo6").innerHTML = f;
-
-
-
-            // This code is not needed and can be marked out, it just proves a,b,c,d,e are not the same
-            if (b === a) {
-                document.querySelector('#targetB').innerHTML = 'Tied!'
-            } else if (b != a) {
-                document.querySelector('#targetB').innerHTML = 'B does not equal A'
+            while (num5 === num4 || num5 === num3 || num5 === num2 || num5 ===num1 ) {
+                var num5 = Math.floor((Math.random() * 69) + 1);
             }
 
-            if (c === a || c === b) {
-                document.querySelector('#targetC').innerHTML = 'Tied!'
-            } else if (c != a && c != b) {
-                document.querySelector('#targetC').innerHTML = 'C does not equal B or A'
+            //add numbers to an array after same number check
+            var arr = [num1,num2,num3,num4,num5];
+
+            // bubble sorting the array to put them in numerical order
+            function swap(arr, first_Index, second_Index){
+                var temp = arr[first_Index];
+                arr[first_Index] = arr[second_Index];
+                arr[second_Index] = temp;
             }
 
-            if (d === a || d === b || d === c) {
-                document.querySelector('#targetD').innerHTML = 'Tied!'
-            } else if (d != a && d != b && d != c) {
-                document.querySelector('#targetD').innerHTML = 'D does not equal C or B or A'
-            }
+            function bubble_Sort(arr){
 
-            if (e === a || e === b || e === c || e === d) {
-                document.querySelector('#targetE').innerHTML = 'Tied!'
-            } else if (e != a && e != b && e != c && e != d) {
-                document.querySelector('#targetE').innerHTML = 'E does not equal D or C or B or A'
+                var len = arr.length,
+                    i, j, stop;
+
+                for (i=0; i < len; i++){
+                    for (j=0, stop=len-i; j < stop; j++){
+                        if (arr[j] > arr[j+1]){
+                            swap(arr, j, j+1);
+                        }
+                    }
+                }
             }
-        }
+            //run the function to make sure non powerball numbers are in numerical order
+            bubble_Sort(arr);
+ 
+            document.getElementById("demo1").innerHTML = arr[0];
+            document.getElementById("demo2").innerHTML = arr[1];
+            document.getElementById("demo3").innerHTML = arr[2];
+            document.getElementById("demo4").innerHTML = arr[3];
+            document.getElementById("demo5").innerHTML = arr[4];
+            document.getElementById("demo6").innerHTML = numPB;
+
+          }
     </script>
     
   
