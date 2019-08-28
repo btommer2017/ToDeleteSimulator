@@ -26,7 +26,7 @@
 
     <h2 style="margin-left: 14%">Click the button to generate your Powerball numbers!</h2>
     <br>
-    <button onclick="myFunction()" style="height:70px; width:100px; margin-left:33.5%;font-size:25px">Try it!</button>
+    <button onclick="getNumbers()" style="height:70px; width:100px; margin-left:33.5%;font-size:25px">Try it!</button>
     <br>
     <br>
     <div class="row">
@@ -136,22 +136,19 @@
     </div>
     <script>
         // function to get a random number 1 through 69 and 1 through 26 for the powerball
-        function myFunction() {
+        function getNumbers() {
             var num1 = Math.floor((Math.random() * 69) + 1);
             var num2 = Math.floor((Math.random() * 69) + 1);
             var num3 = Math.floor((Math.random() * 69) + 1);
             var num4 = Math.floor((Math.random() * 69) + 1);
             var num5 = Math.floor((Math.random() * 69) + 1);
             var numPB = Math.floor((Math.random() * 26) + 1);
-
             
-            // Previous code for B
-            // repeats random 1 through 69 until all numbers are different
-            // while num2=num1, rerun the code
+            // this code makes sure non of the non powerball numbers are the same
             while (num2 === num1) {
                 var num2 = Math.floor((Math.random() * 69) + 1);
             }
-            // while c = a or b, rerun the code
+            
             while (num3 === num2 || num3 === num1) {
                 var num3 = Math.floor((Math.random() * 69) + 1);
             }
@@ -163,41 +160,65 @@
             while (num5 === num4 || num5 === num3 || num5 === num2 || num5 ===num1 ) {
                 var num5 = Math.floor((Math.random() * 69) + 1);
             }
-            document.getElementById("demo1").innerHTML = num1;
-            document.getElementById("demo2").innerHTML = num2;
-            document.getElementById("demo3").innerHTML = num3;
-            document.getElementById("demo4").innerHTML = num4;
-            document.getElementById("demo5").innerHTML = num5;
 
-            // powerball number, can = any of the first 5 so no extra do-whiles needed
+            //add numbers to an array after same number check
+            var arr = [num1,num2,num3,num4,num5];
+
+            // bubble sorting the array to put them in numerical order
+            function swap(arr, first_Index, second_Index){
+                var temp = arr[first_Index];
+                arr[first_Index] = arr[second_Index];
+                arr[second_Index] = temp;
+            }
+
+            function bubble_Sort(arr){
+
+                var len = arr.length,
+                    i, j, stop;
+
+                for (i=0; i < len; i++){
+                    for (j=0, stop=len-i; j < stop; j++){
+                        if (arr[j] > arr[j+1]){
+                            swap(arr, j, j+1);
+                        }
+                    }
+                }
+            }
+            //run the function to make sure non powerball numbers are in numerical order
+            bubble_Sort(arr);
+ 
+            document.getElementById("demo1").innerHTML = arr[0];
+            document.getElementById("demo2").innerHTML = arr[1];
+            document.getElementById("demo3").innerHTML = arr[2];
+            document.getElementById("demo4").innerHTML = arr[3];
+            document.getElementById("demo5").innerHTML = arr[4];
             document.getElementById("demo6").innerHTML = numPB;
 
-
-
+       
             // This code is not needed and can be marked out, it just proves a,b,c,d,e are not the same
-            if (num2 === num1) {
-                document.querySelector('#targetB').innerHTML = 'Tied!'
-            } else if (num2 != num1) {
-                document.querySelector('#targetB').innerHTML = 'num2 does not equal num1'
-            }
+            // if (num2 === num1) {
+            //     document.querySelector('#targetB').innerHTML = 'Tied!'
+            // } else if (num2 != num1) {
+            //     document.querySelector('#targetB').innerHTML = 'num2 does not equal num1'
+            // }
 
-            if (num3 === num2 || num3 === num1) {
-                document.querySelector('#targetC').innerHTML = 'Tied!'
-            } else if (num3 != num1 && num3 != num2) {
-                document.querySelector('#targetC').innerHTML = 'num3 does not equal num 2,1'
-            }
+            // if (num3 === num2 || num3 === num1) {
+            //     document.querySelector('#targetC').innerHTML = 'Tied!'
+            // } else if (num3 != num1 && num3 != num2) {
+            //     document.querySelector('#targetC').innerHTML = 'num3 does not equal num 2,1'
+            // }
 
-            if (num4 === num3 || num4 === num2 || num4 === num1) {
-                document.querySelector('#targetD').innerHTML = 'Tied!'
-            } else if (num4 != num1 && num4 != num2 && num4 != num3) {
-                document.querySelector('#targetD').innerHTML = 'num4 does not equal num 3,2,1'
-            }
+            // if (num4 === num3 || num4 === num2 || num4 === num1) {
+            //     document.querySelector('#targetD').innerHTML = 'Tied!'
+            // } else if (num4 != num1 && num4 != num2 && num4 != num3) {
+            //     document.querySelector('#targetD').innerHTML = 'num4 does not equal num 3,2,1'
+            // }
 
-            if (num5 === num4 || num5 === num3 || num5 === num2 || num5 ===num1) {
-                document.querySelector('#targetE').innerHTML = 'Tied!'
-            } else if (num5 != num1 && num5 != num2 && num5 != num3 && num5 != num4) {
-                document.querySelector('#targetE').innerHTML = 'num5 does not equal num 4,3,2,1'
-            }
+            // if (num5 === num4 || num5 === num3 || num5 === num2 || num5 ===num1) {
+            //     document.querySelector('#targetE').innerHTML = 'Tied!'
+            // } else if (num5 != num1 && num5 != num2 && num5 != num3 && num5 != num4) {
+            //     document.querySelector('#targetE').innerHTML = 'num5 does not equal num 4,3,2,1'
+            // }
         }
     </script>
     
