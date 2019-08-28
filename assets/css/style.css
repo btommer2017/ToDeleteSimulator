@@ -1,0 +1,158 @@
+div.containerHeader {
+    width: 950px;
+    height: 150px;
+    /* background-image: url('../images/powerBall.png') style="width:100%; height: 150px; margin-left: 0%;"; */
+}
+
+div.container1 {
+    width: 60%;
+    height: 85px;
+    /* margin-top:20px; */
+    background-color: #bbb;
+    font-size: 20px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+    color: #111;
+    float: left;
+    text-align: center;
+    padding-top: 5px;
+    margin-left: 5px;
+}
+
+div.container2 {
+    width: 60%;
+    height: 85px;
+    /* margin-top:20px; */
+    background-color: #b5b5b5;
+    font-size: 20px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+    color: #111;
+    float: left;
+    text-align: center;
+    padding-top: 5px;
+    margin-left: -65px;
+}
+
+div.container3 {
+    width: 60%;
+    height: 85px;
+    /* margin-top:20px; */
+    background-color: #bababa;
+    font-size: 20px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+    color: #111;
+    float: left;
+    text-align: center;
+    padding-top: 5px;
+    margin-left: -125px;
+}
+
+div.container4 {
+    width: 60%;
+    height: 85px;
+    /* margin-top:20px; */
+    background-color: #b5b5b5;
+    font-size: 20px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+    color: #111;
+    float: left;
+    text-align: center;
+    padding-top: 5px;
+    margin-left: -185px;
+}
+
+div.container5 {
+    width: 60%;
+    height: 85px;
+    /* margin-top:20px; */
+    background-color: #bbb;
+    font-size: 20px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+    color: #111;
+    float: left;
+    text-align: center;
+    padding-top: 5px;
+    margin-left: -245px;
+}
+
+div.container6 {
+    width: 80%;
+    height: 85px;
+    /* margin-top:20px; */
+    background-color: #a9a9a9;
+    font-size: 20px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+    color: #111;
+    float: left;
+    text-align: center;
+    padding-top: 5px;
+    margin-left: -305px;
+}
+div.container8 {
+    width: 80%;
+    height: 85px;
+    /* margin-top:20px; */
+    background-color: #a9a9a9;
+    font-size: 20px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+    color: #111;
+    float: left;
+    text-align: center;
+    margin-left: -305px;
+    
+}
+div.container7 {
+    width: 80%;
+    height: 25px;
+    /* margin-top:20px; */
+    background-color: #ddd;
+    font-size: 10px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    color: #111;
+    float: left;
+    text-align: center;
+    padding-top: 5px;
+    margin-left: 5px;
+}
+/* Ended up not using any of the below code, saving for later reference */
+li {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.inlineList {
+    display: flex;
+    flex-direction: row;
+    /* Below sets up your display method: flex-start|flex-end|space-between|space-around */
+    justify-content: flex-start;
+    /* Below removes bullets and cleans white-space */
+    list-style: none;
+    padding: 0;
+    /* Bonus: forces no word-wrap */
+    white-space: nowrap;
+}
+
+.inlineList2 {
+    display: flex;
+    flex-direction: row;
+    /* Below sets up your display method: flex-start|flex-end|space-between|space-around */
+    justify-content: flex-start;
+    /* Below removes bullets and cleans white-space */
+    list-style: none;
+    padding: 0;
+    /* Bonus: forces no word-wrap */
+    white-space: nowrap;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
